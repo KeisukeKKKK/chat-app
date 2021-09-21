@@ -1,9 +1,8 @@
 class CreateRoomUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :room_users do |t|
-      t.string :name,               null: false
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.references :room, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
       t.timestamps
     end
   end
