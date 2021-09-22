@@ -1,9 +1,10 @@
-class DeviseCreateUsers < ActiveRecord::Migration[6.0]
+class CreateMessages < ActiveRecord::Migration[6.0]
   def change
-    create_table :users do |t|
-      ## Database authenticatable
-      t.string :name,               null: false
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+    create_table :messages do |t|
+      t.string  :content
+      t.references :room, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+      t.timestamps
+    end
   end
 end
